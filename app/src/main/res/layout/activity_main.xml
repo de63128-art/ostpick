@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F3F5F7">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ostpick"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:background="#183153"
+        android:padding="16dp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <!-- 第一页：匹配 -->
+        <ScrollView
+            android:id="@+id/pageMatch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="扫描箱单"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:textColor="#183153" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="匹配成功后，扫描 DONE 条码确认完成。"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/inputMatch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:minHeight="56dp"
+                    android:hint="箱单条码内容"
+                    android:inputType="text"
+                    android:singleLine="true" />
+
+                <Button
+                    android:id="@+id/btnMatch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="匹配 / 确认 DONE" />
+
+                <TextView
+                    android:id="@+id/textMatchResult"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:minHeight="150dp"
+                    android:gravity="center"
+                    android:padding="16dp"
+                    android:background="#E2E8F0"
+                    android:text="等待扫描"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="#183153" />
+
+                <TextView
+                    android:id="@+id/textPending"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="待确认单号：无"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- 第二页：单号列表 -->
+        <LinearLayout
+            android:id="@+id/pageOrders"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="单号列表"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#183153" />
+
+            <TextView
+                android:id="@+id/textOrderCount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="共 0 条 · 已完成 0 条"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnAdd"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="新增单号" />
+
+                <Button
+                    android:id="@+id/btnDeleteAll"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="删除所有" />
+            </LinearLayout>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TableLayout
+                        android:id="@+id/tableOrders"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TableRow
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#E2E8F0">
+
+                            <TextView
+                                android:layout_width="60dp"
+                                android:layout_height="wrap_content"
+                                android:padding="12dp"
+                                android:text="序号"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="180dp"
+                                android:layout_height="wrap_content"
+                                android:padding="12dp"
+                                android:text="单号"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:padding="12dp"
+                                android:text="状态"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="170dp"
+                                android:layout_height="wrap_content"
+                                android:padding="12dp"
+                                android:text="完成时间"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="150dp"
+                                android:layout_height="wrap_content"
+                                android:padding="12dp"
+                                android:text="操作"
+                                android:textStyle="bold" />
+                        </TableRow>
+                    </TableLayout>
+                </HorizontalScrollView>
+            </ScrollView>
+        </LinearLayout>
+
+        <!-- 第三页：采集 -->
+        <ScrollView
+            android:id="@+id/pageCollect"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="采集单号"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:textColor="#183153" />
+
+                <EditText
+                    android:id="@+id/inputCollect"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:minHeight="56dp"
+                    android:hint="扫描或输入基础单号"
+                    android:inputType="text"
+                    android:singleLine="true" />
+
+                <Button
+                    android:id="@+id/btnCollect"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="加入单号列表" />
+                <Button
+                    android:id="@+id/btnHardwareScan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="启动机载扫描" />
+
+                <TextView
+                    android:id="@+id/textCollectResult"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="等待采集"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:text="Excel 批量导入"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="选择 Excel 文件后，指定工作表和单号所在列。"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/btnImportExcel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="选择 Excel 文件" />
+            </LinearLayout>
+        </ScrollView>
+    </FrameLayout>
+
+    <!-- 底部导航 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="4dp"
+        android:background="#FFFFFF">
+
+        <Button
+            android:id="@+id/navMatch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="扫描匹配" />
+
+        <Button
+            android:id="@+id/navOrders"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="单号列表" />
+
+        <Button
+            android:id="@+id/navCollect"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="采集数据" />
+    </LinearLayout>
+
+</LinearLayout>
